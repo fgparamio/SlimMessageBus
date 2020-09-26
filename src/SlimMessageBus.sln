@@ -138,7 +138,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Serialization.Messag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlimMessageBus.Host.Serialization.Hybrid", "SlimMessageBus.Host.Serialization.Hybrid\SlimMessageBus.Host.Serialization.Hybrid.csproj", "{A6E0EF17-5D09-481A-90F9-16FC24E12AA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlimMessageBus.Host.Hybrid.Test", "Tests\SlimMessageBus.Host.Hybrid.Test\SlimMessageBus.Host.Hybrid.Test.csproj", "{7E18058A-55F3-4342-A27E-F9E4A3BF2A54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlimMessageBus.Host.Hybrid.Test", "Tests\SlimMessageBus.Host.Hybrid.Test\SlimMessageBus.Host.Hybrid.Test.csproj", "{7E18058A-55F3-4342-A27E-F9E4A3BF2A54}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{CBE53E71-7F48-415C-BD43-B812EC207BC6}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\intro.md = ..\docs\intro.md
+		..\docs\provider_azure_eventhubs.md = ..\docs\provider_azure_eventhubs.md
+		..\docs\provider_azure_servicebus.md = ..\docs\provider_azure_servicebus.md
+		..\docs\provider_hybrid.md = ..\docs\provider_hybrid.md
+		..\docs\provider_kafka.md = ..\docs\provider_kafka.md
+		..\docs\provider_memory.md = ..\docs\provider_memory.md
+		..\docs\provider_redis.md = ..\docs\provider_redis.md
+		..\docs\README.md = ..\docs\README.md
+		..\docs\release_notes.md = ..\docs\release_notes.md
+		..\docs\serialization.md = ..\docs\serialization.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
