@@ -390,7 +390,7 @@ Check out the complete [sample](/src/Samples#sampleimages) for image resizing.
 
 * The core of `SlimMessageBus` is "slim"
   * Simple, common and friendly API to work with messaging systems
-  * No external dependencies. Logging is done via `Common.Logging`, so that you can connect your favorite logger provider.
+  * No external dependencies.
   * The core interface can be used in domain model (e.g. DomainEvents)
 * Plugin architecture:
   * DI integration (Autofac, CommonServiceLocator, Unity)
@@ -399,6 +399,7 @@ Check out the complete [sample](/src/Samples#sampleimages) for image resizing.
 * No threads created (pure TPL)
 * Async/Await support
 * Fluent configuration
+* Logging is done via [`Microsoft.Extensions.Logging.Abstractions`](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/), so that you can connect your favorite logger provider.
 
 ## License
 

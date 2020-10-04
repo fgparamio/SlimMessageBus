@@ -403,6 +403,12 @@ SMB uses serialization plugins to serialize (and deserialize) the messages into 
 
 See [Serialization](serialization.md) page.
 
+## Logging
+
+ToDo
+
+https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions
+
 ## Provider specific functionality
 
 Providers introduce more settings and some subtleties to the above documentation.
