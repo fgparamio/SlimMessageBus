@@ -61,7 +61,7 @@ namespace SlimMessageBus.Host.AzureEventHub
             {
                 if (_consumers != null)
                 {
-                    _consumers.ForEach(c => c.DisposeSilently("Consumer", Log));
+                    _consumers.ForEach(c => c.DisposeSilently("Consumer", _logger));
                     _consumers.Clear();
                 }
 

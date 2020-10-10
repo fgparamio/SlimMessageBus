@@ -6,9 +6,10 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Common.Logging;
-using Common.Logging.Simple;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using SecretStore;
 using SlimMessageBus.Host.Config;
 using SlimMessageBus.Host.DependencyResolver;
@@ -20,7 +21,8 @@ namespace SlimMessageBus.Host.Memory.Test
     [Trait("Category", "Integration")]
     public class MemoryMessageBusIt : IDisposable
     {
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private readonly ILoggerFactory _loggerFactory;
+        private readonly ILogger _logger;
 
         private const int NumberOfMessages = 77;
 
@@ -31,7 +33,7 @@ namespace SlimMessageBus.Host.Memory.Test
 
         public MemoryMessageBusIt()
         {
-            LogManager.Adapter = new DebugLoggerFactoryAdapter();
+            _loggerFactory = NullLoggerFactory.Instance;
 
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
@@ -42,6 +44,7 @@ namespace SlimMessageBus.Host.Memory.Test
             MessageBusSettings = new MemoryMessageBusSettings();
 
             MessageBusBuilder = MessageBusBuilder.Create()
+                .WithLoggerFacory(_loggerFactory)
                 .WithSerializer(new JsonMessageSerializer())
                 .WithProviderMemory(MessageBusSettings);
 
@@ -118,14 +121,14 @@ namespace SlimMessageBus.Host.Memory.Test
             await Task.WhenAll(messageTasks).ConfigureAwait(false);
 
             stopwatch.Stop();
-            Log.InfoFormat(CultureInfo.InvariantCulture, "Published {0} messages in {1}", producedMessages.Count, stopwatch.Elapsed);
+            _logger.LogInformation("Published {0} messages in {1}", producedMessages.Count, stopwatch.Elapsed);
 
             // consume
             stopwatch.Restart();
             var consumersReceivedMessages = await ConsumeAll(pingConsumer, subscribers * producedMessages.Count);
             stopwatch.Stop();
 
-            Log.InfoFormat(CultureInfo.InvariantCulture, "Consumed {0} messages in {1}", consumersReceivedMessages.Count, stopwatch.Elapsed);
+            _logger.LogInformation("Consumed {0} messages in {1}", consumersReceivedMessages.Count, stopwatch.Elapsed);
 
             // assert
 
@@ -202,7 +205,7 @@ namespace SlimMessageBus.Host.Memory.Test
             await Task.WhenAll(responseTasks).ConfigureAwait(false);
 
             stopwatch.Stop();
-            Log.InfoFormat(CultureInfo.InvariantCulture, "Published and received {0} messages in {1}", responses.Count, stopwatch.Elapsed);
+            _logger.LogInformation("Published and received {0} messages in {1}", responses.Count, stopwatch.Elapsed);
 
             // assert
 
