@@ -393,7 +393,7 @@ Check out the complete [sample](/src/Samples#sampleimages) for image resizing.
   * No external dependencies.
   * The core interface can be used in domain model (e.g. DomainEvents)
 * Plugin architecture:
-  * DI integration (Autofac, CommonServiceLocator, Unity)
+  * DI integration (Microsoft.Extensions.DependencyInjection, Autofac, CommonServiceLocator, Unity)
   * Message serialization (JSON, XML)
   * Use your favorite messaging broker as provider by simply pulling a nuget package
 * No threads created (pure TPL)
@@ -430,9 +430,9 @@ Run all tests except  integration tests which require local/cloud infrastructure
 dotnet test --filter Category!=Integration
 ```
 
-## Credis
+## Credits
 
-Thanks for the following service cloud providers for providing free instances for our integration tests:
+Thanks to the following service cloud providers for providing free instances for our integration tests:
 
 * Redis - https://redislabs.com/
 * Kafka - https://www.cloudkarafka.com/
