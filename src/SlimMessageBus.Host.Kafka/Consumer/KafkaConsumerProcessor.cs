@@ -33,9 +33,11 @@ namespace SlimMessageBus.Host.Kafka
 
         public KafkaConsumerProcessor(ConsumerSettings consumerSettings, TopicPartition topicPartition, IKafkaCommitController commitController, MessageBusBase messageBus, MessageQueueWorker<Message> messageQueueWorker)
         {
+            _messageBus = messageBus ?? throw new ArgumentNullException(nameof(messageBus));
+
+            _logger = _messageBus.LoggerFactory.CreateLogger<KafkaConsumerProcessor>();
             _logger.LogInformation("Creating for Group: {0}, Topic: {1}, Partition: {2}, MessageType: {3}", consumerSettings.GetGroup(), consumerSettings.Topic, topicPartition, consumerSettings.MessageType);
 
-            _messageBus = messageBus;
             _consumerSettings = consumerSettings;
             TopicPartition = topicPartition;
             _commitController = commitController;

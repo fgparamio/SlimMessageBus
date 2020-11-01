@@ -429,3 +429,12 @@ Run all tests except  integration tests which require local/cloud infrastructure
 ```cmd
 dotnet test --filter Category!=Integration
 ```
+
+## Credis
+
+Thanks for the following service cloud providers for providing free instances for our integration tests:
+
+* Redis - https://redislabs.com/
+* Kafka - https://www.cloudkarafka.com/
+
+Other test instances are hosted in Azure and paid by the project maintainer. If you want to help and sponsor, please write to me.

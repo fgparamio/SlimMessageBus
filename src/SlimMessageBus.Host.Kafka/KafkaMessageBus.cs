@@ -64,25 +64,25 @@ namespace SlimMessageBus.Host.Kafka
 
         private void CreateProviders()
         {
-            foreach (var publisherSettings in Settings.Producers)
+            foreach (var producerSettings in Settings.Producers)
             {
-                var keyProvider = publisherSettings.GetKeyProvider();
+                var keyProvider = producerSettings.GetKeyProvider();
                 if (keyProvider != null)
                 {
-                    _keyProviders.Add(publisherSettings.MessageType, keyProvider);
+                    _keyProviders.Add(producerSettings.MessageType, keyProvider);
                 }
 
-                var partitionProvider = publisherSettings.GetPartitionProvider();
+                var partitionProvider = producerSettings.GetPartitionProvider();
                 if (partitionProvider != null)
                 {
-                    _partitionProviders.Add(publisherSettings.MessageType, partitionProvider);
+                    _partitionProviders.Add(producerSettings.MessageType, partitionProvider);
                 }
             }
         }
 
         private void CreateProducer()
         {
-            _logger.LogInformation("Creating producer {0}...", _producer.Name);
+            _logger.LogInformation("Creating producer...");
             _producer = CreateProducerInternal();
             _logger.LogInformation("Created producer {0}", _producer.Name);
         }

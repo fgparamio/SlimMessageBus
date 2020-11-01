@@ -34,6 +34,7 @@ namespace SlimMessageBus.Host.Memory.Test
         public MemoryMessageBusIt()
         {
             _loggerFactory = NullLoggerFactory.Instance;
+            _logger = _loggerFactory.CreateLogger<MemoryMessageBusIt>();
 
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")

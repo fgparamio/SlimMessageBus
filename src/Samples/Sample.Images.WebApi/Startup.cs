@@ -60,8 +60,6 @@ namespace Sample.Images.WebApi
 
         private IMessageBus BuildMessageBus(IServiceProvider serviceProvider)
         {
-            serviceProvider.CreateScope().ServiceProvider.GetRequiredService
-
             // unique id across instances of this application (e.g. 1, 2, 3)
             var instanceId = Configuration["InstanceId"];
             var kafkaBrokers = Configuration["Kafka:Brokers"];
@@ -85,7 +83,7 @@ namespace Sample.Images.WebApi
                 })
                 //.WithDependencyResolverAsServiceLocator()
                 //.WithDependencyResolverAsAutofac()
-                .WithDependencyResolver(new AspNetCoreMessageBusDependencyResolver(serviceProvider.CreateScope().ServiceProvider.GetRequiredService))
+                .WithDependencyResolver(new AspNetCoreMessageBusDependencyResolver(serviceProvider))
                 .WithSerializer(new JsonMessageSerializer())
                 .WithProviderKafka(new KafkaMessageBusSettings(kafkaBrokers));
 
