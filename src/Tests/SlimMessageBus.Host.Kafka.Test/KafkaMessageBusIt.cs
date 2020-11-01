@@ -15,6 +15,7 @@ using SecretStore;
 using System.Collections.Concurrent;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SlimMessageBus.Host.Kafka.Test
 {
@@ -31,7 +32,6 @@ namespace SlimMessageBus.Host.Kafka.Test
     public class KafkaMessageBusIt : IDisposable
     {
         private const int NumberOfMessages = 77;
-
         private readonly ILoggerFactory _loggerFactory;
         private readonly ILogger _logger;
 
