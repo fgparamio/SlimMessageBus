@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Sample.Serialization.MessagesAvro;
 using SecretStore;
 using SlimMessageBus;
@@ -101,6 +102,7 @@ namespace Sample.Avro.ConsoleApp
                     if (type == typeof(AddCommandConsumer)) return new AddCommandConsumer();
                     if (type == typeof(SubtractCommandConsumer)) return new SubtractCommandConsumer();
                     if (type == typeof(MultiplyRequestHandler)) return new MultiplyRequestHandler();
+                    if (type == typeof(ILoggerFactory)) return null;
                     throw new InvalidOperationException();
                 }))
                 .Do(builder =>

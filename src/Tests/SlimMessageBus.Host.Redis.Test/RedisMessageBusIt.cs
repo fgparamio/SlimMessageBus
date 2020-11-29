@@ -94,6 +94,7 @@ namespace SlimMessageBus.Host.Redis.Test
                 .WithDependencyResolver(new LookupDependencyResolver(f =>
                 {
                     if (f == typeof(PingConsumer)) return pingConsumer;
+                    if (f == typeof(ILoggerFactory)) return null;
                     throw new InvalidOperationException();
                 }));
 
